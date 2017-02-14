@@ -37,7 +37,7 @@
     "github-deploy:prod": "webpack --config config/webpack.github-deploy.js --progress --profile --env.githubProd",
     "github-deploy": "npm run github-deploy:dev",
     "lint": "npm run tslint \"src/**/*.ts\"",
-    "postinstall": "ng build && mv dist/* .",
+    "postinstall": "npm build && mv dist/* .",
     "postversion": "git push && git push --tags",
     "preclean:install": "npm run clean",
     "preinstall": "npm install -g http-server",
