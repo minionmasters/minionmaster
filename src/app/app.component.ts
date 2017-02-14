@@ -19,10 +19,26 @@ import { AppState } from './app.service';
     './app.component.css'
   ],
   template: `
+    <footer>
+      <span>WebPack Angular 2 Starter by <a [href]="url">@self</a></span>
+      <div>
+        <a [href]="url">
+          <img [src]="angularclassLogo" width="25%">
+        </a>
+      </div>
+    </footer>
     <nav>
       <a [routerLink]=" ['./'] "
         routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
         Index
+      </a>
+      <a [routerLink]=" ['./path'] "
+        routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
+        Routes
+      </a>
+      <a [routerLink]=" ['./truck'] "
+        routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
+        Trucks
       </a>
       <a [routerLink]=" ['./home'] "
         routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
@@ -47,21 +63,12 @@ import { AppState } from './app.service';
     </main>
 
     <pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>
-
-    <footer>
-      <span>WebPack Angular 2 Starter by <a [href]="url">@AngularClass</a></span>
-      <div>
-        <a [href]="url">
-          <img [src]="angularclassLogo" width="25%">
-        </a>
-      </div>
-    </footer>
   `
 })
 export class AppComponent implements OnInit {
   public angularclassLogo = 'assets/img/angularclass-avatar.png';
   public name = 'Angular 2 Webpack Starter';
-  public url = 'https://twitter.com/AngularClass';
+  public url = '/';
 
   constructor(
     public appState: AppState
