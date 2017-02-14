@@ -37,10 +37,9 @@
     "github-deploy:prod": "webpack --config config/webpack.github-deploy.js --progress --profile --env.githubProd",
     "github-deploy": "npm run github-deploy:dev",
     "lint": "npm run tslint \"src/**/*.ts\"",
-    "postinstall": "npm run",
+    "postinstall": "npm run webdriver:update",
     "postversion": "git push && git push --tags",
     "preclean:install": "npm run clean",
-    "preinstall": "npm install -g http-server",
     "preversion": "npm test",
     "protractor": "protractor",
     "protractor:delay": "sleep 3 && npm run protractor",
@@ -52,7 +51,7 @@
     "server:prod:ci": "http-server dist -p 3000 -c-1 --cors",
     "server": "npm run server:dev",
     "start:hmr": "npm run server:dev:hmr",
-    "start": "http-server",
+    "start": "npm run server:dev",
     "test": "npm run lint && karma start",
     "tslint": "tslint",
     "typedoc": "typedoc",
@@ -89,7 +88,7 @@
     "rxjs": "5.0.2",
     "zone.js": "0.7.6"
   },
-  "dependencies": {
+  "devDependencies": {
     "@angular/compiler-cli": "2.4.6",
     "@types/hammerjs": "^2.0.33",
     "@types/jasmine": "^2.2.34",
@@ -151,8 +150,6 @@
     "webpack-dev-server": "2.3.0",
     "webpack-dll-bundles-plugin": "^1.0.0-beta.5",
     "webpack-merge": "~2.6.1"
-  },
-  "devDependencies": {
   },
   "repository": {
     "type": "git",
