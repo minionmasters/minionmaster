@@ -67,7 +67,7 @@ module.exports = function (config) {
       noInfo: true,
       // and use stats to turn off verbose output
       stats: {
-        // options i.e. 
+        // options i.e.
         chunks: false
       }
     },
@@ -78,7 +78,7 @@ module.exports = function (config) {
      * possible values: 'dots', 'progress'
      * available reporters: https://npmjs.org/browse/keyword/karma-reporter
      */
-    reporters: ['mocha', 'coverage', 'remap-coverage'],
+    reporters: ['mocha', 'coverage', 'remap-coverage', 'threshold'],
 
     // web server port
     port: 9876,
@@ -94,6 +94,14 @@ module.exports = function (config) {
 
     // enable / disable watching file and executing tests whenever any file changes
     autoWatch: false,
+
+    // the configure thresholds for karma coverage
+    thresholdReporter: {
+      statements: 93.39,
+      branches: 0,
+      functions: 90,
+      lines: 91.92
+    },
 
     /*
      * start these browsers
