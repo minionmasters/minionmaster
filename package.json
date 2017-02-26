@@ -37,7 +37,7 @@
     "github-deploy:prod": "webpack --config config/webpack.github-deploy.js --progress --profile --env.githubProd",
     "github-deploy": "npm run github-deploy:dev",
     "heroku-prebuild": "npm i npm@^4 -g && npm install webdriver-manager",
-    "heroku-postbuild": "npm install webpack@^2.2.0 && npm install rimraf@^2.5.4 && npm install webpack-merge@^2.6.1 && npm install assets-webpack-plugin@^3.5.1 && npm install copy-webpack-plugin@^4.0.0 && npm install extract-text-webpack-plugin@^2.0.0-rc.3 && npm install html-webpack-plugin@^2.28.0 && npm install script-ext-html-webpack-plugin@^1.6.2 && npm install awesome-typescript-loader@^3.0.0-beta.18 && npm run build:prod",
+    "heroku-postbuild": "npm install webpack@^2.2.0 && npm install rimraf@^2.5.4 && npm install webpack-merge@^2.6.1 && npm install assets-webpack-plugin@^3.5.1 && npm install copy-webpack-plugin@^4.0.0 && npm install extract-text-webpack-plugin@^2.0.0-rc.3 && npm install html-webpack-plugin@^2.28.0 && npm install script-ext-html-webpack-plugin@^1.6.2 && npm install awesome-typescript-loader@^3.0.0-beta.18 && npm install ngc-webpack@^1.1.0 && npm run build:prod",
     "lint": "npm run tslint \"src/**/*.ts\"",
     "postinstall": "npm run webdriver:update",
     "postversion": "git push && git push --tags",
