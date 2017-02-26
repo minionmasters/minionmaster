@@ -37,7 +37,7 @@
     "github-deploy:prod": "webpack --config config/webpack.github-deploy.js --progress --profile --env.githubProd",
     "github-deploy": "npm run github-deploy:dev",
     "heroku-prebuild": "npm i npm@^4 -g && npm install webdriver-manager",
-    "heroku-postbuild": "npm install webpack@^2.2.0 && npm install rimraf@^2.5.4 && npm install webpack-merge@^2.6.1 && npm run build:prod",
+    "heroku-postbuild": "npm install webpack@^2.2.0 && npm install rimraf@^2.5.4 && npm install webpack-merge@^2.6.1 && npm install assets-webpack-plugin@^3.5.1 && npm run build:prod",
     "lint": "npm run tslint \"src/**/*.ts\"",
     "postinstall": "npm run webdriver:update",
     "postversion": "git push && git push --tags",
