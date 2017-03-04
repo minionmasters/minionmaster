@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AlertService, AuthenticationService } from '../_services/index';
+import { AlertService, AuthenticationService, AngularFireService } from '../_services/index';
 
 @Component({
     selector: 'login',
@@ -16,11 +16,12 @@ export class LoginComponent implements OnInit {
         private route: ActivatedRoute,
         private router: Router,
         private authenticationService: AuthenticationService,
+        public angularFireService: AngularFireService,
         private alertService: AlertService) { }
 
     public ngOnInit() {
         // reset login status
-        this.authenticationService.logout();
+        this.angularFireService.logout();
 
         // get return url from route parameters or default to '/'
         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
@@ -37,5 +38,16 @@ export class LoginComponent implements OnInit {
                     this.alertService.error(error);
                     this.loading = false;
                 });
+    }
+
+    public loginWithGoogle() {
+        this.loading = true;
+        this.angularFireService.loginWithGoogle().then((data) => {
+            // Send them to the homepage if they are logged in
+            this.router.navigate([this.returnUrl]);
+        }).catch((error) => {
+            this.alertService.error(error.message);
+            this.loading = false;
+        });
     }
 }

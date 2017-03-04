@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../_models/index';
-import { UserService } from '../_services/index';
+import { UserService, AngularFireService } from '../_services/index';
 
 @Component({
     selector: 'home',
@@ -11,8 +11,12 @@ export class HomeComponent implements OnInit {
     public currentUser: User;
     public users: User[] = [];
 
-    constructor(private userService: UserService) {
-        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    constructor(private userService: UserService, public angularFireService: AngularFireService) {
+        if (this.angularFireService.getUser() != null) {
+            this.currentUser = this.angularFireService.getUser();
+        } else {
+            this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        }
     }
 
     public ngOnInit() {

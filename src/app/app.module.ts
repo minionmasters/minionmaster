@@ -2,6 +2,7 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }    from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { AngularFireModule } from 'angularfire2';
 
 // used to create fake backend
 import { fakeBackendProvider } from './_helpers/index';
@@ -13,17 +14,28 @@ import { routing }        from './app.routing';
 
 import { AlertComponent } from './_directives/index';
 import { AuthGuard } from './_guards/index';
-import { AlertService, AuthenticationService, UserService } from './_services/index';
+import { AlertService, AuthenticationService, UserService,
+                AngularFireService } from './_services/index';
 import { HomeComponent } from './home/index';
 import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
+
+// Must export the config
+export const firebaseConfig = {
+  apiKey: 'AIzaSyDJ5MsJdwOIjgQTZFK5oyFzvh-VDU10HYM',
+  authDomain: 'minionmaster-f9839.firebaseapp.com',
+  databaseURL: 'https://minionmaster-f9839.firebaseio.com',
+  storageBucket: 'minionmaster-f9839.appspot.com',
+  messagingSenderId: '246977860853'
+};
 
 @NgModule({
     imports: [
         BrowserModule,
         FormsModule,
         HttpModule,
-        routing
+        routing,
+        AngularFireModule.initializeApp(firebaseConfig)
     ],
     declarations: [
         AppComponent,
@@ -37,6 +49,7 @@ import { RegisterComponent } from './register/index';
         AlertService,
         AuthenticationService,
         UserService,
+        AngularFireService,
 
         // providers used to create fake backend
         fakeBackendProvider,
