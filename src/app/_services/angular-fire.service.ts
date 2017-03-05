@@ -1,13 +1,17 @@
 import { Injectable } from '@angular/core';
-import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2';
+import { AngularFire, AuthProviders, AuthMethods,
+      FirebaseListObservable } from 'angularfire2';
 
 import { User } from '../_models/index';
 
 @Injectable()
 export class AngularFireService {
   public currentUser: User;
+  public trucks: FirebaseListObservable<any>;
 
-  constructor(public af: AngularFire) {}
+  constructor(public af: AngularFire) {
+    this.trucks = this.af.database.list('trucks');
+  }
 
   // Logs in the user
   public loginWithGoogle() {
@@ -37,5 +41,10 @@ export class AngularFireService {
     } else {
       return null;
     }
+  }
+
+  public addTruck() {
+    let truck = { name: 'test' };
+    this.trucks.push(truck);
   }
 }
