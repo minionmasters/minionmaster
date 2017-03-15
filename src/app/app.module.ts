@@ -18,6 +18,7 @@ import { AlertService, AuthenticationService, UserService,
                 AngularFireService } from './_services/index';
 import { HomeComponent } from './home/index';
 import { LoginComponent } from './login/index';
+import { TruckComponent } from './trucks/index';
 import { RegisterComponent } from './register/index';
 
 // Must export the config
@@ -42,7 +43,8 @@ export const firebaseConfig = {
         AlertComponent,
         HomeComponent,
         LoginComponent,
-        RegisterComponent
+        RegisterComponent,
+        TruckComponent
     ],
     providers: [
         AuthGuard,
