@@ -13,13 +13,27 @@ export class HomeComponent implements OnInit {
     public users: User[] = [];
     public newTruck: string;
     public trucks: FirebaseListObservable<any>;
+    public firstName: string;
+    public img: string;
 
     constructor(private userService: UserService, public angularFireService: AngularFireService) {
         if (this.angularFireService.getUser() != null) {
             this.currentUser = this.angularFireService.getUser();
+            if (this.currentUser.firstName != null) {
+                this.firstName = this.currentUser.firstName;
+            } else {
+                this.firstName = 'Friend';
+            }
+
+            if (this.currentUser.img != null) {
+                this.img = 'currentUser.img';
+            }
         } else {
-            this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            this.angularFireService.logout();
         }
+        // else {
+        //     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        // }
         this.trucks = this.angularFireService.trucks;
     }
 
