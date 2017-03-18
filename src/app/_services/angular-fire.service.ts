@@ -47,4 +47,8 @@ export class AngularFireService {
     let truck = { name: 'test' };
     this.trucks.push(truck);
   }
+
+  public deleteTruck(truck) {
+    this.trucks.remove(truck);
+  }
 }
