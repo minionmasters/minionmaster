@@ -18,4 +18,8 @@ export class TruckComponent {
     public addTruck() {
         this.angularFireService.addTruck();
     }
+
+    public deleteTruck(truck) {
+        this.angularFireService.deleteTruck(truck);
+    }
 }

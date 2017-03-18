@@ -17,9 +17,10 @@ export class HomeComponent implements OnInit {
     constructor(private userService: UserService, public angularFireService: AngularFireService) {
         if (this.angularFireService.getUser() != null) {
             this.currentUser = this.angularFireService.getUser();
-        } else {
-            this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
         }
+        // else {
+        //     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        // }
         this.trucks = this.angularFireService.trucks;
     }
 

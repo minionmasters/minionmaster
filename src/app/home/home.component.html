@@ -9,7 +9,7 @@
         Trucks
       </a>
     </nav>
-    <h2>Welcome to Route Logic {{currentUser.firstName}}!</h2>
+    <h2 *ngIf="currentUser.firstName">Welcome to Route Logic {{currentUser.firstName}}!</h2>
     <img *ngIf="currentUser.img" [src]="currentUser.img">
     <p><a [routerLink]="['/login']">Logout</a></p>
 </div>

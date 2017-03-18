@@ -14,7 +14,7 @@
     <ul>
         <li *ngFor="let truck of trucks | async">
             Truck {{ truck.name }}
-	    <!--- <a (click)="deleteTruck({{truck}})">Delete</a>-->
+	      <a (click)="deleteTruck(truck)">Delete</a>
         </li>
     </ul>
     <p><a [routerLink]="['/login']">Logout</a></p>
