@@ -10,6 +10,9 @@ export class AngularFireService {
   public trucks: FirebaseListObservable<any>;
 
   constructor(public af: AngularFire) {
+    if (this.getUser() != null) {
+      this.currentUser = this.getUser();
+    }
     this.trucks = this.af.database.list('trucks');
   }
 
@@ -32,6 +35,7 @@ export class AngularFireService {
         if (auth) {
             this.currentUser.firstName = auth.google.displayName;
             this.currentUser.img = auth.google.photoURL;
+            this.currentUser.id = auth.google.uid;
         } else {
           // User is not authenticated
         }
@@ -43,9 +47,41 @@ export class AngularFireService {
     }
   }
 
+  public checkUserDb(id) {
+    let url = '/users/' + id;
+    let name = '';
+    if (this.currentUser.username) {
+      name = this.currentUser.username;
+    }
+
+    let firstName = '';
+    if (this.currentUser.firstName) {
+      firstName = this.currentUser.firstName;
+    }
+
+    let lastName = '';
+    if (this.currentUser.lastName) {
+      lastName = this.currentUser.lastName;
+    }
+
+    let ref =  this.af.database.object(url);
+    ref.update({
+        user_name: name,
+        first_name: firstName,
+        last_name: lastName
+    });
+  }
+
   public addTruck() {
-    let truck = { name: 'test' };
-    this.trucks.push(truck);
+    let id = this.currentUser.id;
+    this.checkUserDb(id);
+    let truckId = Math.floor((Math.random() * 100) + 1);
+    let url = '/users/' + id + '/trucks/' + 'truck' + truckId;
+    let ref =  this.af.database.object(url);
+    ref.update({
+        truck_id: truckId
+    });
+    console.log('Truck #' + truckId + ' created!');
   }
 
   public deleteTruck(truck) {

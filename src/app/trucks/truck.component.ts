@@ -7,7 +7,7 @@ import { FirebaseListObservable } from 'angularfire2';
     templateUrl: 'truck.component.html'
 })
 
-export class TruckComponent {
+export class TruckComponent implements OnInit {
     public newTruck: string;
     public trucks: FirebaseListObservable<any>;
 
@@ -21,5 +21,10 @@ export class TruckComponent {
 
     public deleteTruck(truck) {
         this.angularFireService.deleteTruck(truck);
+    }
+
+    public ngOnInit() {
+        this.trucks = this.angularFireService.trucks;
+        console.log(this.trucks);
     }
 }
