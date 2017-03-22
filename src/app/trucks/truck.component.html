@@ -13,7 +13,7 @@
     <button class="btn btn-primary" (click)="addTruck()">+</button>
     <ul>
         <li *ngFor="let truck of trucks | async">
-            Truck {{ truck.name }}
+            Truck {{ truck.truck_id }}
 	      <a (click)="deleteTruck(truck)">Delete</a>
         </li>
     </ul>

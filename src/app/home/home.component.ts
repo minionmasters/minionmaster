@@ -45,10 +45,6 @@ export class HomeComponent implements OnInit {
         this.userService.delete(id).subscribe(() => { this.loadAllUsers(); });
     }
 
-    public addTruck() {
-        this.angularFireService.addTruck();
-    }
-
     private loadAllUsers() {
         this.userService.getAll().subscribe((users) => { this.users = users; });
     }
