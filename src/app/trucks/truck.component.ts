@@ -2,12 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireService } from '../_services/index';
 import { FirebaseListObservable } from 'angularfire2';
 
+import { User } from '../_models/index';
+
 @Component({
     selector: 'truck',
     templateUrl: 'truck.component.html'
 })
 
 export class TruckComponent implements OnInit {
+    public currentUser: User;
     public newTruck: string;
     public trucks: FirebaseListObservable<any>;
 
@@ -24,7 +27,7 @@ export class TruckComponent implements OnInit {
     }
 
     public ngOnInit() {
-        this.trucks = this.angularFireService.trucks;
-        console.log(this.trucks);
+        this.currentUser = this.angularFireService.getUser();
+        this.trucks = this.angularFireService.getTrucks(this.currentUser.id);
     }
 }

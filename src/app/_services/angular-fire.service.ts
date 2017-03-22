@@ -13,7 +13,15 @@ export class AngularFireService {
     if (this.getUser() != null) {
       this.currentUser = this.getUser();
     }
-    this.trucks = this.af.database.list('trucks');
+    this.getTrucks(this.currentUser.id);
+  }
+
+  public getTrucks(id) {
+    this.checkUserDb(this.currentUser.id);
+    let url = 'users/' + id + '/trucks';
+    let ref =  this.af.database.object(url);
+    this.trucks = this.af.database.list(url);
+    return this.trucks;
   }
 
   // Logs in the user
@@ -74,7 +82,6 @@ export class AngularFireService {
 
   public addTruck() {
     let id = this.currentUser.id;
-    this.checkUserDb(id);
     let truckId = Math.floor((Math.random() * 100) + 1);
     let url = '/users/' + id + '/trucks/' + 'truck' + truckId;
     let ref =  this.af.database.object(url);
