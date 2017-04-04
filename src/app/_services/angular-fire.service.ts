@@ -10,10 +10,7 @@ export class AngularFireService {
   public trucks: FirebaseListObservable<any>;
 
   constructor(public af: AngularFire) {
-    if (this.getUser() != null) {
-      this.currentUser = this.getUser();
-    }
-    this.getTrucks(this.currentUser.id);
+    this.currentUser = this.getUser();
   }
 
   public getTrucks(id) {
