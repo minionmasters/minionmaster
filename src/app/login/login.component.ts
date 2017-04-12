@@ -4,13 +4,15 @@ import { AlertService, AuthenticationService, AngularFireService } from '../_ser
 
 @Component({
     selector: 'login',
-    templateUrl: 'login.component.html'
+    templateUrl: 'login.component.html',
+    styleUrls: ['login.component.css']
 })
 
 export class LoginComponent implements OnInit {
     public model: any = {};
     public loading = false;
     public returnUrl: string;
+    public img: string;
 
     constructor(
         private route: ActivatedRoute,
@@ -20,6 +22,7 @@ export class LoginComponent implements OnInit {
         private alertService: AlertService) { }
 
     public ngOnInit() {
+        this.img = '../../assets/google_sign_in.png';
         // reset login status
         this.angularFireService.logout();
 

@@ -1,4 +1,25 @@
-<div class="col-md-6 col-md-offset-3">
+<h1>Welcome to Route Logic {{firstName}}.</h1>
+<p class="lead">The Leader in Route Optimization Software.</p>
+
+<br>
+
+<button class="btn btn-lg btn-primary" (click)="onClick()">Create Route</button>
+
+<div class="container">
+  
+  	<hr>
+  
+  	<div class="row">
+        <div class="col-md-12">
+          <div class="panel panel-default">
+            <div class="panel-heading"><h3>Logout.</h3></div>
+            <div class="panel-body"><p><a [routerLink]="['/login']">Logout</a></p>
+            </div>
+          </div>
+        </div>
+</div>
+
+<!--<div class="col-md-6 col-md-offset-3">
     <nav>
       <a [routerLink]=" ['./home'] "
         routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
@@ -9,7 +30,14 @@
         Trucks
       </a>
     </nav>
-    <h2>Welcome to Route Logic {{firstName}}!</h2>
-    <img *ngIf="img" [src]="currentUser.img">
-    <p><a [routerLink]="['/login']">Logout</a></p>
+    <div class="container text-center">
+      <div class="jumbotron">
+        <h2>Welcome to Route Logic {{firstName}}!</h2>
+        <button class="btn btn-primary" (click)="onClick()">Create Route</button>
+        <img *ngIf="img" [src]="currentUser.img">
+        <p><a [routerLink]="['/login']">Logout</a></p>
+      </div>
 </div>
+</div>-->
+
+
