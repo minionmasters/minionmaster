@@ -21,6 +21,9 @@ import { LoginComponent } from './login/index';
 import { TruckComponent } from './trucks/index';
 import { RegisterComponent } from './register/index';
 
+import { ModalModule } from 'angular2-modal';
+import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
+
 // Must export the config
 export const firebaseConfig = {
   apiKey: 'AIzaSyDJ5MsJdwOIjgQTZFK5oyFzvh-VDU10HYM',
@@ -36,7 +39,9 @@ export const firebaseConfig = {
         FormsModule,
         HttpModule,
         routing,
-        AngularFireModule.initializeApp(firebaseConfig)
+        AngularFireModule.initializeApp(firebaseConfig),
+        ModalModule.forRoot(),
+        BootstrapModalModule
     ],
     declarations: [
         AppComponent,
