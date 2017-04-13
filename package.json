@@ -119,6 +119,7 @@
     "zone.js": "0.7.6"
   },
   "devDependencies": {
+    "@boogiesox/papaparse": "^4.1.4",
     "@types/jasmine": "^2.2.34",
     "@types/node": "^7.0.0",
     "@types/selenium-webdriver": "~2.53.39",

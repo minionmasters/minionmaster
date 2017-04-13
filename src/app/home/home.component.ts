@@ -6,6 +6,8 @@ import { FirebaseListObservable } from 'angularfire2';
 import { Overlay } from 'angular2-modal';
 import { Modal } from 'angular2-modal/plugins/bootstrap';
 
+import * as Papa from '@boogiesox/papaparse';
+
 @Component({
     selector: 'home',
     templateUrl: 'home.component.html',
@@ -42,6 +44,17 @@ export class HomeComponent implements OnInit {
         } else {
             this.angularFireService.logout();
         }
+    }
+
+    public onChange(event) {
+        let files = event.srcElement.files;
+        console.log(files);
+        Papa.parse(files[0].name, {
+            complete: (results) => {
+                console.log('Finished:', results.data);
+            }
+        });
+        // Papa.parse(files[0].name);
     }
 
     public onClick() {
