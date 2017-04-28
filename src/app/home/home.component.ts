@@ -2,6 +2,7 @@ import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { User } from '../_models/index';
 import { UserService, AngularFireService } from '../_services/index';
 import { FirebaseListObservable } from 'angularfire2';
+import { Router } from '@angular/router';
 
 import { Overlay } from 'angular2-modal';
 import { Modal } from 'angular2-modal/plugins/bootstrap';
@@ -21,7 +22,8 @@ export class HomeComponent implements OnInit {
     public img: string;
 
     constructor(private userService: UserService, public angularFireService: AngularFireService,
-                overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal) {
+                overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal,
+                public router: Router) {
         // this.trucks = this.angularFireService.trucks;
         overlay.defaultViewContainer = vcRef;
     }
@@ -45,15 +47,16 @@ export class HomeComponent implements OnInit {
     }
 
     public onClick() {
-        this.modal.alert()
-            .size('lg')
-            .showClose(true)
-            .title('Create Route')
-            .body(`
-                <h4>First things first, lets import all your addresses.</h4>
-                <button>Import from Excel</button>
-            `)
-            .open();
+        // this.modal.alert()
+        //     .size('lg')
+        //     .showClose(true)
+        //     .title('Create Route')
+        //     .body(`
+        //         <h4>First things first, lets import all your addresses.</h4>
+        //         <button>Import from Excel</button>
+        //     `)
+        //     .open();
+        this.router.navigateByUrl('/address');
     }
 
     public deleteUser(id: number) {
