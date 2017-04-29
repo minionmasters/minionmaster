@@ -1,6 +1,6 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule }    from '@angular/forms';
+import { FormsModule, ReactiveFormsModule }    from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AngularFireModule } from 'angularfire2';
 
@@ -25,6 +25,8 @@ import { AddressComponent } from './address/index';
 import { ModalModule } from 'angular2-modal';
 import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
 
+import { AgmCoreModule } from 'angular2-google-maps/core';
+
 // Must export the config
 export const firebaseConfig = {
   apiKey: 'AIzaSyDJ5MsJdwOIjgQTZFK5oyFzvh-VDU10HYM',
@@ -38,11 +40,16 @@ export const firebaseConfig = {
     imports: [
         BrowserModule,
         FormsModule,
+        ReactiveFormsModule,
         HttpModule,
         routing,
         AngularFireModule.initializeApp(firebaseConfig),
         ModalModule.forRoot(),
-        BootstrapModalModule
+        BootstrapModalModule,
+        AgmCoreModule.forRoot({
+            apiKey: 'AIzaSyDOJfZaz4rnByhsl1g6yy42eYfkHZ-IdRU',
+            libraries: ['places']
+        })
     ],
     declarations: [
         AppComponent,
