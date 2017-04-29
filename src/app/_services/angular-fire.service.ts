@@ -8,6 +8,7 @@ import { User } from '../_models/index';
 export class AngularFireService {
   public currentUser: User;
   public trucks: FirebaseListObservable<any>;
+  public addresses: FirebaseListObservable<any>;
 
   constructor(public af: AngularFire) {
     this.currentUser = this.getUser();
@@ -19,6 +20,14 @@ export class AngularFireService {
     let ref =  this.af.database.object(url);
     this.trucks = this.af.database.list(url);
     return this.trucks;
+  }
+
+  public getAddresses(id) {
+    this.checkUserDb(this.currentUser.id);
+    let url = 'users/' + id + '/AddressList';
+    let ref =  this.af.database.object(url);
+    this.addresses = this.af.database.list(url);
+    return this.addresses;
   }
 
   // Logs in the user
@@ -86,6 +95,21 @@ export class AngularFireService {
         truck_id: truckId
     });
     console.log('Truck #' + truckId + ' created!');
+  }
+
+  public addAddress(address) {
+    let id = this.currentUser.id;
+    let addressId = Math.floor((Math.random() * 100) + 1);
+    let url = '/users/' + id + '/AddressList/' + 'address' + addressId;
+    let ref =  this.af.database.object(url);
+    ref.update({
+      Address: address
+    });
+    console.log('Address ' + address + ' added!');
+  }
+
+  public deleteAddress(address) {
+    this.addresses.remove(address);
   }
 
   public deleteTruck(truck) {

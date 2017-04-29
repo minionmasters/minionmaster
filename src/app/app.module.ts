@@ -20,6 +20,7 @@ import { HomeComponent } from './home/index';
 import { LoginComponent } from './login/index';
 import { TruckComponent } from './trucks/index';
 import { RegisterComponent } from './register/index';
+import { AddressComponent } from './address/index';
 
 import { ModalModule } from 'angular2-modal';
 import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
@@ -49,7 +50,8 @@ export const firebaseConfig = {
         HomeComponent,
         LoginComponent,
         RegisterComponent,
-        TruckComponent
+        TruckComponent,
+        AddressComponent
     ],
     providers: [
         AuthGuard,

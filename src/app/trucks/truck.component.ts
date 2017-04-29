@@ -15,7 +15,7 @@ export class TruckComponent implements OnInit {
     public trucks: FirebaseListObservable<any>;
 
     constructor(public angularFireService: AngularFireService) {
-        this.trucks = this.angularFireService.trucks;
+        this.trucks = this.angularFireService.addresses;
     }
 
     public addTruck() {
@@ -28,6 +28,6 @@ export class TruckComponent implements OnInit {
 
     public ngOnInit() {
         this.currentUser = this.angularFireService.getUser();
-        this.trucks = this.angularFireService.getTrucks(this.currentUser.id);
+        this.trucks = this.angularFireService.getAddresses(this.currentUser.id);
     }
 }
